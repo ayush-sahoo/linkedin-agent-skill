@@ -10,7 +10,10 @@ Three passes, in this order:
                  These survive copy-paste and are the most mechanical tell in
                  any generated text.
   2. TYPOGRAPHIC em dash -> comma, en dash -> hyphen, curly quotes -> straight,
-                 ellipsis -> three dots, bullet -> hyphen.
+                 ellipsis -> three dots, bullet -> hyphen. A dash opening a
+                 line is a bullet, so it becomes a hyphen; one closing a line
+                 is dangling, so it goes. No pass crosses a newline: the line
+                 break is the post's format.
   3. LEXICAL     replace the slop lexicon in slop.json with plain words,
                  preserving capitalisation and leaving URLs untouched.
 
@@ -102,17 +105,26 @@ def pass_typographic(text, lex):
             continue
         hits.append({"name": f"{ch} {entry['name']}", "count": n, "to": entry["to"].strip() or "(space)"})
         if ch == "—":
+            # A dash opening a line is a bullet, not a clause break, and the
+            # lexicon already maps a real bullet to a hyphen.
+            text = re.sub(r"(?m)^([ \t]*)—[ \t]*", r"\1- ", text)
+            # One closing a line is a dangling connector. Drop it.
+            text = re.sub(r"(?m)[ \t]*—[ \t]*$", "", text)
             # " word — word " and "word—word" both collapse to a comma + space.
-            text = re.sub(r"\s*—\s*", ", ", text)
+            # Horizontal space only: \s would eat the newline and weld the
+            # next line onto this one, and the line break is the post's format.
+            text = re.sub(r"[ \t]*—[ \t]*", ", ", text)
         elif ch == "–":
-            text = re.sub(r"\s*–\s*(?=\d)", "-", text)      # 5–10  -> 5-10
-            text = re.sub(r"\s+–\s+", ", ", text)            # used as em dash
+            text = re.sub(r"[ \t]*–[ \t]*(?=\d)", "-", text)  # 5–10  -> 5-10
+            text = re.sub(r"(?m)^([ \t]*)–[ \t]*", r"\1- ", text)
+            text = re.sub(r"(?m)[ \t]*–[ \t]*$", "", text)
+            text = re.sub(r"[ \t]+–[ \t]+", ", ", text)        # used as em dash
             text = text.replace("–", "-")
         else:
             text = text.replace(ch, entry["to"])
     # A comma inserted before existing punctuation reads wrong.
-    text = re.sub(r",\s*([,.;:!?])", r"\1", text)
-    text = re.sub(r",\s*\n", "\n", text)
+    text = re.sub(r",[ \t]*([,.;:!?])", r"\1", text)
+    text = re.sub(r",[ \t]*(?=\n)", "", text)
     return text, hits
 
 
@@ -172,9 +184,10 @@ def pass_lexical(text, lex):
         text = re.sub(r"(?m)^[ \t]*[.!?;:,]+[ \t]*", "", text)
         text = re.sub(r"(?m)^[ \t]+", "", text)
         text = re.sub(r"(?m)[ \t]+$", "", text)
-    # An em dash opening a line became a leading comma in pass_typographic.
-    text = re.sub(r"(?m)^[ \t]*([,.;:])\s*", "", text)
-    text = re.sub(r"\s+([,.;:!?])", r"\1", text)
+    # A line left opening with a stray mark reads as a fragment. Horizontal
+    # space only, so the line below is never pulled up onto this one.
+    text = re.sub(r"(?m)^[ \t]*([,.;:])[ \t]*", "", text)
+    text = re.sub(r"[ \t]+([,.;:!?])", r"\1", text)
     text = re.sub(r"(?m)^[ \t]+$", "", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     # An em dash that became a comma, followed by a sentence connective, leaves

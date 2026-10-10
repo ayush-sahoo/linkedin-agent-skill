@@ -83,7 +83,9 @@ python3 detect.py before.txt after.txt       # prove the delta
   spaces. Your keyboard does not make these. They survive copy-paste and they
   are invisible in every editor you own.
 - **Typography.** Em dash to comma, en dash to hyphen, curly quotes to
-  straight, ellipsis to three dots.
+  straight, ellipsis to three dots. A dash that opens a line is a bullet, so
+  it becomes a hyphen and the list survives. Nothing is ever pulled across a
+  newline, because on LinkedIn the line break is the format.
 - **The lexicon.** 170 stock words and phrases with plain-English
   replacements - delve, leverage, robust, seamless, crucial, testament to, "in
   today's fast-paced world", "let that sink in" - with capitalisation preserved

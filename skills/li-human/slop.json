@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "note": "Lexicon used by humanize.py and detect.py. Replacements are plain-English and keep the sentence grammatical. Edit freely - it is meant to be yours.",
   "invisible": [
     {
@@ -152,13 +152,63 @@
       "family": "verbs"
     },
     {
+      "find": "delves into",
+      "replace": "looks at",
+      "family": "verbs"
+    },
+    {
+      "find": "delved into",
+      "replace": "looked at",
+      "family": "verbs"
+    },
+    {
+      "find": "delving into",
+      "replace": "looking at",
+      "family": "verbs"
+    },
+    {
       "find": "delve",
       "replace": "look",
       "family": "verbs"
     },
     {
+      "find": "delves",
+      "replace": "looks",
+      "family": "verbs"
+    },
+    {
+      "find": "delved",
+      "replace": "looked",
+      "family": "verbs"
+    },
+    {
+      "find": "delving",
+      "replace": "looking",
+      "family": "verbs"
+    },
+    {
       "find": "dive deep into",
       "replace": "get into",
+      "family": "verbs"
+    },
+    {
+      "find": "dives deep into",
+      "replace": "gets into",
+      "family": "verbs"
+    },
+    {
+      "find": "dove deep into",
+      "replace": "got into",
+      "family": "verbs"
+    },
+    {
+      "find": "dived deep into",
+      "replace": "got into",
+      "family": "verbs"
+    },
+    {
+      "find": "diving deep into",
+      "replace": "getting into",
       "family": "verbs"
     },
     {
@@ -172,6 +222,16 @@
       "family": "verbs"
     },
     {
+      "find": "leverages",
+      "replace": "uses",
+      "family": "verbs"
+    },
+    {
+      "find": "leveraged",
+      "replace": "used",
+      "family": "verbs"
+    },
+    {
       "find": "leveraging",
       "replace": "using",
       "family": "verbs"
@@ -179,6 +239,16 @@
     {
       "find": "utilize",
       "replace": "use",
+      "family": "verbs"
+    },
+    {
+      "find": "utilizes",
+      "replace": "uses",
+      "family": "verbs"
+    },
+    {
+      "find": "utilized",
+      "replace": "used",
       "family": "verbs"
     },
     {
@@ -192,8 +262,38 @@
       "family": "verbs"
     },
     {
+      "find": "harnesses",
+      "replace": "uses",
+      "family": "verbs"
+    },
+    {
+      "find": "harnessed",
+      "replace": "used",
+      "family": "verbs"
+    },
+    {
+      "find": "harnessing",
+      "replace": "using",
+      "family": "verbs"
+    },
+    {
       "find": "embark on",
       "replace": "start",
+      "family": "verbs"
+    },
+    {
+      "find": "embarks on",
+      "replace": "starts",
+      "family": "verbs"
+    },
+    {
+      "find": "embarked on",
+      "replace": "started",
+      "family": "verbs"
+    },
+    {
+      "find": "embarking on",
+      "replace": "starting",
       "family": "verbs"
     },
     {
@@ -202,8 +302,38 @@
       "family": "verbs"
     },
     {
+      "find": "fosters",
+      "replace": "builds",
+      "family": "verbs"
+    },
+    {
+      "find": "fostered",
+      "replace": "built",
+      "family": "verbs"
+    },
+    {
+      "find": "fostering",
+      "replace": "building",
+      "family": "verbs"
+    },
+    {
       "find": "facilitate",
       "replace": "help",
+      "family": "verbs"
+    },
+    {
+      "find": "facilitates",
+      "replace": "helps",
+      "family": "verbs"
+    },
+    {
+      "find": "facilitated",
+      "replace": "helped",
+      "family": "verbs"
+    },
+    {
+      "find": "facilitating",
+      "replace": "helping",
       "family": "verbs"
     },
     {
@@ -212,8 +342,38 @@
       "family": "verbs"
     },
     {
+      "find": "showcases",
+      "replace": "shows",
+      "family": "verbs"
+    },
+    {
+      "find": "showcased",
+      "replace": "showed",
+      "family": "verbs"
+    },
+    {
+      "find": "showcasing",
+      "replace": "showing",
+      "family": "verbs"
+    },
+    {
       "find": "unlock",
       "replace": "get",
+      "family": "verbs"
+    },
+    {
+      "find": "unlocks",
+      "replace": "gets",
+      "family": "verbs"
+    },
+    {
+      "find": "unlocked",
+      "replace": "got",
+      "family": "verbs"
+    },
+    {
+      "find": "unlocking",
+      "replace": "getting",
       "family": "verbs"
     },
     {
@@ -222,8 +382,38 @@
       "family": "verbs"
     },
     {
+      "find": "elevates",
+      "replace": "improves",
+      "family": "verbs"
+    },
+    {
+      "find": "elevated",
+      "replace": "improved",
+      "family": "verbs"
+    },
+    {
+      "find": "elevating",
+      "replace": "improving",
+      "family": "verbs"
+    },
+    {
       "find": "streamline",
       "replace": "simplify",
+      "family": "verbs"
+    },
+    {
+      "find": "streamlines",
+      "replace": "simplifies",
+      "family": "verbs"
+    },
+    {
+      "find": "streamlined",
+      "replace": "simplified",
+      "family": "verbs"
+    },
+    {
+      "find": "streamlining",
+      "replace": "simplifying",
       "family": "verbs"
     },
     {
@@ -232,8 +422,33 @@
       "family": "verbs"
     },
     {
+      "find": "spearheads",
+      "replace": "leads",
+      "family": "verbs"
+    },
+    {
+      "find": "spearheaded",
+      "replace": "led",
+      "family": "verbs"
+    },
+    {
+      "find": "spearheading",
+      "replace": "leading",
+      "family": "verbs"
+    },
+    {
       "find": "underscore",
       "replace": "show",
+      "family": "verbs"
+    },
+    {
+      "find": "underscored",
+      "replace": "showed",
+      "family": "verbs"
+    },
+    {
+      "find": "underscoring",
+      "replace": "showing",
       "family": "verbs"
     },
     {
@@ -247,13 +462,53 @@
       "family": "verbs"
     },
     {
+      "find": "cultivates",
+      "replace": "builds",
+      "family": "verbs"
+    },
+    {
+      "find": "cultivated",
+      "replace": "built",
+      "family": "verbs"
+    },
+    {
+      "find": "cultivating",
+      "replace": "building",
+      "family": "verbs"
+    },
+    {
       "find": "amplify",
       "replace": "boost",
       "family": "verbs"
     },
     {
+      "find": "amplifies",
+      "replace": "boosts",
+      "family": "verbs"
+    },
+    {
+      "find": "amplified",
+      "replace": "boosted",
+      "family": "verbs"
+    },
+    {
+      "find": "amplifying",
+      "replace": "boosting",
+      "family": "verbs"
+    },
+    {
       "find": "curate",
       "replace": "pick",
+      "family": "verbs"
+    },
+    {
+      "find": "curates",
+      "replace": "picks",
+      "family": "verbs"
+    },
+    {
+      "find": "curating",
+      "replace": "picking",
       "family": "verbs"
     },
     {
@@ -267,8 +522,38 @@
       "family": "verbs"
     },
     {
+      "find": "empowers",
+      "replace": "helps",
+      "family": "verbs"
+    },
+    {
+      "find": "empowered",
+      "replace": "helped",
+      "family": "verbs"
+    },
+    {
+      "find": "empowering",
+      "replace": "helping",
+      "family": "verbs"
+    },
+    {
       "find": "revolutionize",
       "replace": "change",
+      "family": "verbs"
+    },
+    {
+      "find": "revolutionizes",
+      "replace": "changes",
+      "family": "verbs"
+    },
+    {
+      "find": "revolutionized",
+      "replace": "changed",
+      "family": "verbs"
+    },
+    {
+      "find": "revolutionizing",
+      "replace": "changing",
       "family": "verbs"
     },
     {

@@ -84,7 +84,7 @@ python3 detect.py before.txt after.txt       # prove the delta
   are invisible in every editor you own.
 - **Typography.** Em dash to comma, en dash to hyphen, curly quotes to
   straight, ellipsis to three dots.
-- **The lexicon.** 113 stock words and phrases with plain-English
+- **The lexicon.** 170 stock words and phrases with plain-English
   replacements - delve, leverage, robust, seamless, crucial, testament to, "in
   today's fast-paced world", "let that sink in" - with capitalisation preserved
   and URLs untouched. It lives in
@@ -160,7 +160,7 @@ your name. If a draft needs a number you have not given, it comes back with
 
 ```
 skills/li-post/hooks.json        21 hook formulas: template, example, what it is for, how it gets ruined
-skills/li-human/slop.json        the lexicon: 113 terms, 17 invisible classes, 11 structural tells
+skills/li-human/slop.json        the lexicon: 170 terms, 17 invisible classes, 11 structural tells
 skills/li-human/humanize.py      the three cleaning passes
 skills/li-human/detect.py        the five-check panel
 skills/li-profile/rubric.json    the 100-point profile score

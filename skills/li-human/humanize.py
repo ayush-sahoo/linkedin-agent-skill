@@ -126,23 +126,53 @@ def _match_case(src, repl):
     return repl
 
 
+def _keep_stronger(m):
+    """Of two collided marks keep the sentence terminator, else the first."""
+    first, second = m.group(1), m.group(2)
+    if first in ".!?":
+        return first
+    return second if second in ".!?" else first
+
+
 def pass_lexical(text, lex):
     """Replace slop words and phrases. Longest first so phrases win."""
     hits = []
+    deleted = False
     entries = sorted(lex["phrases"] + lex["words"],
                      key=lambda e: len(e["find"]), reverse=True)
     for entry in entries:
         find = entry["find"]
-        pattern = re.compile(r"\b" + re.escape(find).replace(r"\ ", r"\s+") + r"\b",
+        if not find:
+            continue
+        # Anchor on a word boundary only at an end that is actually a word
+        # character. A term like "what are your thoughts?" ends in punctuation,
+        # and a trailing \b there can never match, so the entry would be dead.
+        lead = r"\b" if find[0].isalnum() else ""
+        trail = r"\b" if find[-1].isalnum() else ""
+        pattern = re.compile(lead + re.escape(find).replace(r"\ ", r"\s+") + trail,
                              re.IGNORECASE)
         found = pattern.findall(text)
         if not found:
             continue
         hits.append({"find": find, "replace": entry["replace"] or "(deleted)",
                      "count": len(found), "family": entry["family"]})
+        deleted = deleted or not entry["replace"]
         text = pattern.sub(lambda m: _match_case(m.group(0), entry["replace"]), text)
     # Clean up after deletions.
     text = re.sub(r"[ \t]{2,}", " ", text)
+    if deleted:
+        # A deleted clause leaves its own terminator behind, stranded against
+        # the mark that was already there: "Thoughts? Let that sink in."
+        # collapses to "Thoughts? ." and then to "Thoughts?." below. Drop the
+        # orphan here instead. This runs before the pull-back, so a real
+        # "..." - which has no space inside it - is left alone.
+        text = re.sub(r"([.!?;:,])[ \t]+([.!?;:,])(?![.!?])", _keep_stronger, text)
+        # At the start of a line the orphan leads instead of trailing, and a
+        # deletion leaves its own spacing behind at either end.
+        text = re.sub(r"(?m)^[ \t]*[.!?;:,]+[ \t]*", "", text)
+        text = re.sub(r"(?m)^[ \t]+", "", text)
+        text = re.sub(r"(?m)[ \t]+$", "", text)
+    # An em dash opening a line became a leading comma in pass_typographic.
     text = re.sub(r"(?m)^[ \t]*([,.;:])\s*", "", text)
     text = re.sub(r"\s+([,.;:!?])", r"\1", text)
     text = re.sub(r"(?m)^[ \t]+$", "", text)
